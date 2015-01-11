@@ -1,45 +1,115 @@
 <!doctype html>
 <html lang="en" ng-app="Smawg">
-<head>
- <title>Bootstrap Template</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="dist/smawg-frontend-0.0.1.min.js"></script>
-</head>
-<body>
+  <head>
+    <title>Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet" media="screen">
+    <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="dist/smawg-frontend-0.0.1.min.js"></script>
+  </head>
 
-  <div ng-view></div>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Bootstrap <3</a>
-  </div>
-  <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div><!--/.nav-collapse -->
-  </div>
-  </div>
+  <style>
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arvo', Georgia, Times, serif;
+}
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Bootstrap starter template</h1>
-      <p class="lead">Bacon ipsum dolor sit amet tenderloin chuck jowl, drumstick pork loin kevin andouille tri-tip. Turkey biltong sirloin, tongue rump pork belly t-bone tail sausage venison corned beef. Jerky pig shoulder beef, tri-tip turducken kevin ribeye prosciutto spare ribs.</p>
-      <a class="btn btn-primary btn-lg btn-block">Big ASS Learn more button</a>
-    </div>
+p, div {
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+    body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  background: url(http://subtlepatterns.com/patterns/lightpaperfibers.png) repeat 0 0;
+    }
+    .container-narrow {
+    margin: 0 auto;
+    max-width: 700px;
+    }
+
+    .container-narrow > hr {
+    margin: 40px 0 0 0;
+    }
+.jumbotron {
+  margin: 5px 0;
+  text-align: center;
+  background-color:transparent;
+}
+.jumbotron h1 {
+  font-size: 72px;
+  line-height: 1;
+  font-weight: bold;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+.marketing {
+  margin: 40px 0;
+}
+
+.marketing p + h4 {
+  margin-top: 28px;
+}
+  </style>
+
+  <body>
+<div class="container-narrow">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+<h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h3>
+  <hr>
+
+<div class="jumbotron">
+  <h1>we <span class="glyphicon glyphicon-heart" style="color:#428bca;"></span> awesome accounting!</h1>
+  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <a class="btn btn-large btn-success" href="#">Sign up today <span class="glyphicon glyphicon-ok-circle"></span></a>
+  <br/><br/>
+  <a href="https://twitter.com/Smawg" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @Smawg</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  </script>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://twitter.com/intent/tweet?screen_name=Smawg" class="twitter-mention-button" data-size="large">Tweet to @Smawg</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  </script>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://smawg.se" data-text="Smawg #yolo -" data-size="large">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <center><iframe width="320" height="240" style="max-width:100%" src="http://www.youtube.com/watch?v=vCSIRDqIDA8?rel=0" frameborder="0" allowfullscreen></iframe>
   </div>
+  <div class="col-md-6">
+    <iframe width="320" height="240" style="max-width:100%" src="http://www.youtube.com/watch?v=p5J8BUsA4rM?rel=0" frameborder="0" allowfullscreen></iframe></center>
+  </div>
+</div>
+<div class="row marketing">
+  <div class="col-md-4">
+    <h3><span class="glyphicon glyphicon-info-sign" style="color:#428bca;"></span> Subheading</h3>
+     <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+  </div>
+  <div class="col-md-4">
+    <h3><span class="glyphicon glyphicon-info-sign" style="color:#428bca;"></span> Subheading</h3>
+    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+  </div>
+  <div class="col-md-4">
+    <h3><span class="glyphicon glyphicon-info-sign" style="color:#428bca;"></span> Subheading</h3>
+    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+  </div>
+</div>
+<div class="footer">
+  <p>&copy; Smawg Ltd 2013</p>
+</div>
 
   </body>
-
-</body>
 </html>
