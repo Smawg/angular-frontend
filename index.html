@@ -1,118 +1,42 @@
 <!doctype html>
-<html lang="en" ng-app="Smawg">
-	<head>
-		<title>Bootstrap Template</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="css/main.css" rel="stylesheet" media="screen">
-		<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
-		<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-		<script src="bower_components/angular/angular.js"></script>
-		<script src="bower_components/angular-route/angular-route.js"></script>
-		<script src="dist/smawg-frontend-0.0.1.min.js"></script>
-	</head>
+<html lang="en">
+  <head>
+    <title>Smawg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js" rel="stylesheet" media="screen">-->
+    <!--<link href="css/main.css" rel="stylesheet" media="screen">-->
+    <link href="//fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="/assets/css/smawg.css" rel="stylesheet" media="screen">
 
-	<style>
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Arvo', Georgia, Times, serif;
-		}
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="/bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="dist/smawg-frontend-0.0.1.min.js"></script>
+  </head>
 
-		p, div {
-			font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-		}
-		body {
-			padding-top: 20px;
-			padding-bottom: 20px;
-		background: url(http://subtlepatterns.com/patterns/lightpaperfibers.png) repeat 0 0;
-		}
-		.container-narrow {
-		margin: 0 auto;
-			max-width: 700px;
-		}
+  <body>
+<div class="container-narrow">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
 
-		.container-narrow > hr {
-		margin: 40px 0 0 0;
-		}
-		.jumbotron {
-		margin: 5px 0;
-			text-align: center;
-			background-color:transparent;
-		}
-		.jumbotron h1 {
-			font-size: 72px;
-			line-height: 1;
-			font-weight: bold;
-		}
-		.jumbotron .btn {
-			font-size: 21px;
-		padding: 14px 24px;
-		}
-		.marketing {
-		margin: 40px 0;
-		}
+<div ng-app="SmawgApp">
 
-		.marketing p + h4 {
-			margin-top: 28px;
-		}
-	</style>
+<ng-view></ng-view>
 
-	<body>
-	<div class="container-narrow">
-		<ul class="nav nav-pills pull-right">
-		<li class="active"><a href="#">Home</a></li>
-		<li><a href="#About">About</a></li>
-		<li><a href="#Contact">Contact</a></li>
-		</ul>
-		<h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h3>
-		<hr>
+<div class="footer">
+  <p>&copy; Smawg Ltd 2013</p>
+</div>
 
-		<div class="jumbotron">
-			<h1>we <span class="glyphicon glyphicon-heart" style="color:#428bca;"></span> accounting!</h1>
-			<p class="lead">And soon you do too.</p>
-			<a class="btn btn-large btn-success" href="#">Sign up today <span class="glyphicon glyphicon-ok-circle"></span></a>
-			<br/><br/>
+</div>
 
-		</div>
-		<div class="row marketing">
-			<div class="col-md-4">
-				<h3><span class="glyphicon glyphicon-ok-circle" style="color:#428bca;"></span> Easy</h3>
-				<p>You're going to feel like it.</p>
-			</div>
-			<div class="col-md-4">
-				<h3><span class="glyphicon glyphicon-ok-circle" style="color:#428bca;"></span> Looks</h3>
-				<p>You want to show it off.</p>
-			</div>
-			<div class="col-md-4">
-				<h3><span class="glyphicon glyphicon-ok-circle" style="color:#428bca;"></span> No bullshit</h3>
-				<p>We will show you how your company is doing.</p>
-			</div>
-		</div>
-		<div class="row marketing">
-			<a class="btn btn-small btn-success" href="#">add voucher <span class="glyphicon glyphicon-plus-sign"></span></a>
-			<a class="btn btn-small btn-success" href="#">edit voucher <span class="glyphicon glyphicon-ok-circle"></span></a>
-			<a class="btn btn-small btn-success" href="#">view last month <span class="glyphicon glyphicon-stats"></span></a>
-			<a class="btn btn-small btn-success" href="#">view last year <span class="glyphicon glyphicon-stats"></span></a>		
-		</div>
-		<div class="container" id="Contact">
-			<h3><span class="glyphicon glyphicon-info-sign" style="color:#428cba"></span> Contact details</h3>
-			<a href="https://twitter.com/Smawg" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @Smawg</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-			</script>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="https://twitter.com/intent/tweet?screen_name=Smawg" class="twitter-mention-button" data-size="large">Tweet to @Smawg</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-			</script>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://smawg.se" data-text="Smawg #yolo -" data-size="large">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-			</script>
-			<strong>Questions?</strong> Please <a href="mailto:random@smawg.se"><span class="icon icon-envelope-alt"></span>&#32;drop us a line</a>
-		</div>
-		<div class="footer">
-			<p>&copy; Smawg Ltd 2015</p>
-		</div>
-	</div>
-
-	</body>
+  </body>
 </html>

@@ -4,10 +4,11 @@
  * @see controllers
  * @see services
  */
-var app = angular.module('ExampleApp',
+var SmawgApp = angular.module('SmawgApp',
     [   
+        'ngRoute',
         'restangular',
-        'ExampleApp.controllers',
-        'ExampleApp.services'
+        'SmawgApp.controllers',
+        'SmawgApp.services'
     ]   
 );
