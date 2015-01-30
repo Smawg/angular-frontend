@@ -8,6 +8,7 @@ var SmawgApp = angular.module('SmawgApp',
     [   
         'ngRoute',
         'restangular',
+        'ui.bootstrap',
         'SmawgApp.controllers',
         'SmawgApp.services'
     ]   
