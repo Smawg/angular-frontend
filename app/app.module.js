@@ -5,11 +5,11 @@
  * @see services
  */
 var SmawgApp = angular.module('SmawgApp',
-    [   
-        'ngRoute',
+    [
+        'ui.router',
+        'ngMaterial',
         'restangular',
-        'ui.bootstrap',
         'SmawgApp.controllers',
         'SmawgApp.services'
-    ]   
+    ]
 );
