@@ -20,23 +20,9 @@
   </head>
 
   <body>
-<div class="container-narrow">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</div>
-
-<div ng-app="SmawgApp">
-
-<ng-view></ng-view>
-
-<div class="footer">
-  <p>&copy; Smawg Ltd 2013</p>
-</div>
-
-</div>
-
+    <div ng-app="SmawgApp">
+      <div ng-controller="HomeController"></div>
+      <ng-view></ng-view>
+    </div>
   </body>
 </html>
