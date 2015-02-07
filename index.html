@@ -1,28 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Smawg</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js" rel="stylesheet" media="screen">-->
-    <!--<link href="css/main.css" rel="stylesheet" media="screen">-->
-    <link href="//fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href="/assets/css/smawg.css" rel="stylesheet" media="screen">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!--<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen">-->
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/default-theme.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Arvo" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans" />
+    <!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/smawg.css" />
 
     <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/restangular/dist/restangular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
-    <script src="dist/smawg-frontend-0.0.1.min.js"></script>
-  </head>
-
-  <body>
-    <div ng-app="SmawgApp">
-      <div ng-controller="HomeController"></div>
-      <ng-view></ng-view>
+    <!--<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>-->
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/hammerjs/hammer.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/dist/smawg-frontend-0.0.1.min.js"></script>
+</head>
+<body ng-app="SmawgApp" ng-controller="SmawgNav" layout="column">
+  <md-toolbar layout="row">
+    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+      <span class="visibilityhidden">Menu</span>
+    </button>
+    <h1>SMAWG</h1>
+  </md-toolbar>
+  <div layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-sm')">
+    <ul>
+        <li class="ng-scope">
+            <a class="md-button" ui-sref="#">Home</a>
+        </li>
+        <li class="ng-scope">
+            <a class="md-button" ui-sref="dash">Dash</a>
+        </li>
+        <li class="ng-scope">
+            <a class="md-button" ui-sref="about">About</a>
+        </li>
+    </ul>
+    </md-sidenav>
+    <div layout="column" flex id="content">
+      <md-content layout="column" flex class="md-padding" ui-view>
+      </md-content>
     </div>
-  </body>
+  </div>
+</body>
 </html>
