@@ -1,0 +1,36 @@
+        <div class="container-narrow">
+                <ul class="nav nav-pills pull-right">
+                <li><a href="#">Home</a></li>
+                <li class="active"><a href="#dash">Dash</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                </ul>
+                <h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h3>
+                <hr>
+        </div>
+<div class="container-narrow">
+<form class="form-horizontal" ng-submit="add()">
+    <fieldset>
+        <legend>Add a voucher</legend>
+        <div class="control-group">
+            <label class="control-label" for="add-description">Description</label>
+
+            <div class="controls">
+                <input id="add-description" name="description" type="text" placeholder="A short description"
+                       ng-model="newVoucher.description"/>
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label" for="add-date">Date</label>
+
+            <div class="controls">
+                <input id="add-date" name="date" type="date" placeholder="2015-01-21" required
+                       ng-model="newVoucher.date"/>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Add</button>
+        </div>
+    </fieldset>
+</form>
+</div>
