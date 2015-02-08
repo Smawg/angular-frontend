@@ -1,3 +1,3 @@
-angular.module('SmawgApp.controllers').controller('DashController', function ($scope) {
+angular.module('SmawgApp.controllers').controller('DashCtrl', function ($scope) {
     console.log("DASH");
 });
