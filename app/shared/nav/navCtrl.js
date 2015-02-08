@@ -3,3 +3,5 @@ angular.module('SmawgApp.controllers').controller('SmawgNavCtrl', ['$scope', '$m
     $mdSidenav(menuId).toggle();
   };
 }]);
+
+

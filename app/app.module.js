@@ -8,3 +8,11 @@ var SmawgApp = angular.module('SmawgApp',
     ]
 );
 angular.module('SmawgApp.controllers', []);
+
+
+SmawgApp.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue-grey')
+    .accentPalette('pink')
+    .backgroundPalette('grey');
+});
