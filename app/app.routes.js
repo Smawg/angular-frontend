@@ -13,7 +13,7 @@ SmawgApp.config(function($stateProvider, $urlRouterProvider) {
       })
       .state('dash.graphs', {
         url: '/graphs',
-        templateUrl: 'app/components/dash/graphView.html'
+        templateUrl: 'app/components/dash/graphsView.html'
       })
       .state('home', {
         url: '/home',
