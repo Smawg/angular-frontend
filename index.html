@@ -22,7 +22,7 @@
     <script src="/bower_components/angular-material/angular-material.min.js"></script>
     <script src="/dist/smawg-frontend-0.0.1.min.js"></script>
 </head>
-<body ng-app="SmawgApp" ng-controller="SmawgNav" layout="column">
+<body ng-app="SmawgApp" ng-controller="SmawgNavCtrl" layout="column">
   <md-toolbar layout="row">
     <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
       <span class="visibilityhidden">Menu</span>
@@ -33,7 +33,7 @@
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-sm')">
     <ul>
         <li class="ng-scope">
-            <a class="md-button" ui-sref="#">Home</a>
+            <a class="md-button" ui-sref="home">Home</a>
         </li>
         <li class="ng-scope">
             <a class="md-button" ui-sref="dash">Dash</a>

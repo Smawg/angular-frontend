@@ -5,19 +5,27 @@ SmawgApp.config(function($stateProvider, $urlRouterProvider) {
       .state('dash', {
         url: '/dash',
         templateUrl: 'app/components/dash/dashView.html',
-        controller: 'DashController'
+        controller: 'DashCtrl'
+      })
+      .state('dash.overview', {
+        url: '/overview',
+        templateUrl: 'app/components/dash/overviewView.html'
+      })
+      .state('dash.graphs', {
+        url: '/graphs',
+        templateUrl: 'app/components/dash/graphView.html'
       })
       .state('home', {
         url: '/home',
         templateUrl: 'app/components/home/homeView.html',
-        controller: 'DashController'
+        controller: 'HomeCtrl'
       })
       .state('about', {
-        templateUrl: 'app/components/about/aboutView.html',
-        controller: 'HomeController'
+        url: '/about',
+        templateUrl: 'app/components/about/aboutView.html'
       })
       .state('voucher/:voucherId', {
-        templateUrl: 'app/voucher/voucherView.html',
-        controller: 'VoucherController'
+        templateUrl: 'app/components/voucher/voucherView.html',
+        controller: 'VoucherCtrl'
       });
   });

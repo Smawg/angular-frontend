@@ -1,13 +1,13 @@
-        <div class="container-narrow">
-                <ul class="nav nav-pills pull-right">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#dash">Dash</a></li>
-                <li><a href="#About">About</a></li>
-                <li><a href="#Contact">Contact</a></li>
-                </ul>
-                <h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h3>
-                <hr>
-        </div>
+    <md-tabs class="md-accent" md-selected="data.selectedIndex">
+      <md-tab id="tab1" aria-controls="tab1-content" ui-sref="dash.overview">
+        Overview
+      </md-tab>
+      <md-tab id="tab2" aria-controls="tab3-content" ui-sref="dash.graphs">
+        Graphs
+      </md-tab>
+    </md-tabs>
+<div ui-view></div>
+
 <div class="container-narrow">
 <form class="form-horizontal" ng-submit="add()">
     <fieldset>
