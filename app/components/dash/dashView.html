@@ -1,13 +1,10 @@
-        <div class="container-narrow">
-                <ul class="nav nav-pills pull-right">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#dash">Dash</a></li>
-                <li><a href="#About">About</a></li>
-                <li><a href="#Contact">Contact</a></li>
-                </ul>
-                <h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h3>
-                <hr>
-        </div>
+
+  <legend> Vouchers</legend>
+  <div class="VoucherController">
+    <div class="column" ng-repeat="voucher in vouchers">{{voucher.description}}</div>
+    </div>
+  </div>
+
 <div class="container-narrow">
 <form class="form-horizontal" ng-submit="add()">
     <fieldset>
