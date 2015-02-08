@@ -1,9 +1,3 @@
-/**
- * Setup of main AngularJS application, with Restangular being defined as a dependency.
- *
- * @see controllers
- * @see services
- */
 var SmawgApp = angular.module('SmawgApp',
     [
         'ui.router',
@@ -13,3 +7,4 @@ var SmawgApp = angular.module('SmawgApp',
         'SmawgApp.services'
     ]
 );
+angular.module('SmawgApp.controllers', []);
