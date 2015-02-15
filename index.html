@@ -31,10 +31,10 @@
 </header>
 -->
   <div layout="row" flex>
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-sidenav md-swipe-left="closeMenu()" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
       <md-toolbar>
         <h1 class="md-toolbar-tools">
-          <a layout="row" ui-sref="home" ng-click="closeMenu()" flex>
+          <a class="md-button" layout="row" ui-sref="home" ng-click="closeMenu()" flex>
             <div style="line-height:40px; text-indent: 15px;">Smawg</div>
           </a>
         </h1>
@@ -47,8 +47,8 @@
     </md-sidenav>
     <div layout="column" tabindex="-1" role="main" flex id="content">
       <md-toolbar class="md-theme-default">
-        <div class="md-toolbar-tools">
-            <md-button class="menu-icon" aria-label="Toggle Menu" ng-click="openMenu()">Menu</md-button>
+        <div class="md-toolbar-tools" ng-click="openMenu()" tabIndex="0">
+          <md-button aria-label="Toggle Menu">Menu</md-button>
         </div>
       </md-toolbar>
       <md-content layout="column" flex class="md-padding" ui-view>
