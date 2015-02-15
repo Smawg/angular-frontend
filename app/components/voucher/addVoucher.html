@@ -1,0 +1,88 @@
+
+<!---
+
+I want to get a Json similar to the following:
+{"voucher": {"number": 1, "description": "Penningtvätt", "date": "2015-01-11", "voucher_rows_attributes": [{"account_number": 666, "debet": 100, "credit": 0}, {"account_number": 1987, "debet": 0, "credit": 100}]}}
+
+-->
+
+
+<md-content class="md-padding md-whiteframe-z1">
+<md-toolbar class="md-primary">
+  <h1 class="md-toolbar-tools">Add a voucher</h1>
+</md-toolbar>
+<form name="addVoucherForm">
+    <div layout layout-sm="column">
+	 <md-input-container flex>
+            <label>Voucher ID</label>
+            <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="newVoucher.number">
+            <div ng-messages="addVoucherForm.number.$error" ng-show="addVoucherForm.number.$dirty">
+              <div ng-message="required">A description is required.</div>
+              <div ng-message="minlength">The description should probably be slightly more informative.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container flex>
+            <label>Description</label>
+            <input name="description" placeholder="A short description" minlength="2" required ng-model="newVoucher.description">
+            <div ng-messages="addVoucherForm.description.$error" ng-show="addVoucherForm.description.$dirty">
+              <div ng-message="required">A description is required.</div>
+              <div ng-message="minlength">The description should probably be slightly more informative.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Date</label>
+            <input name="date" type="date" required ng-model="newVoucher.date">
+            <div ng-messages="addVoucherForm.date.$error" ng-show="addVoucherForm.date.$dirty">
+              <div ng-message="required">A date is required.</div>
+            </div>
+          </md-input-container>
+     </div>
+
+     <md-grid-list md-cols="3" md-row-height="1:1" md-gutter="2px" >
+     <div class="row">
+     <label class="col-md-4">Account</label>
+     <label class="col-md-2">Debet</label>
+     <label class="col-md-2">Kredit</label>
+     </div>
+     <div class="row" ng-repeat="row in AccountRows">
+       <md-grid-tile class="col-md-4">
+        <md-input-container>
+          <input name="account_number" type="number" placeholder="Account number"  required ng-model="newVoucher.account_number">
+        </md-input-container>
+       </md-grid-tile>
+       <md-grid-tile>
+        <md-input-container class="col-md-2">
+          <input name="account_debet" type="number" placeholder="Debet"  ng-model="newVoucher.debet">
+        </md-input-container>
+       </md-grid-tile>
+       <md-grid-tile>
+        <md-input-container class="col-md-2">
+          <input name="account_kredit" type="number" placeholder="Kredit"  ng-model="newVoucher.kredit">
+        </md-input-container>
+       </md-grid-tile>
+     </md-grid-list>
+     </div>
+     <div class="row">
+      <md-grid-tile class="col-md-4">
+        <md-input-container>
+          <input name="account_number" type="number" placeholder="Total"  disabled ng-model="newVoucher.account_number">
+        </md-input-container>
+       </md-grid-tile>
+       <md-grid-tile>
+        <md-input-container class="col-md-2">
+          <input name="account_debet" type="number" placeholder="Debet" disabled  ng-model="newVoucher.debet">
+        </md-input-container>
+       </md-grid-tile>
+       <md-grid-tile>
+        <md-input-container class="col-md-2">
+          <input name="account_kredit" type="number" placeholder="Kredit" disabled  ng-model="newVoucher.kredit">
+        </md-input-container>
+       </md-grid-tile>
+     </md-grid-list>
+     </div>
+     <md-button><i class="icon-ok-circle icon-white"></i> Save voucher</md-button>
+     <md-button type="button" ng-click="addAccountRow();"> <i class="icon-plus icon-white"></i> Add account row</md-button>
+</form>
+</md-content>

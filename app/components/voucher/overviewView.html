@@ -1,0 +1,20 @@
+<div ng-controller="VoucherCtrl">
+<md-content>
+  <md-list>
+    <md-item ng-repeat="voucher in vouchers">
+      <md-item-content>
+        <div class="md-tile-left">
+          <img src="https://placekitten.com/g/50/50"></img>
+        </div>
+        <div class="md-tile-content">
+          <h3>{{voucher.description}}</h3>
+          <p>{{voucher.date}}</p>
+          <div layout layout-sm="column" ng-repeat="voucher_row_attribute in voucher.voucher_rows_attributes">
+            <p> {{voucher_row_attribute.account_number}}:{{voucher_row_attibute}}</p>
+          </div>	
+        </div>
+      </md-item-content>
+    </md-item>
+  </md-list>
+</md-content>
+</div>
