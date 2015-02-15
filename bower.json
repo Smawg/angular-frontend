@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "angular": "1.3.12",
-    "angular-ui-router": "0.2.13",
+    "angular-ui-router": "master",
     "angular-sanitize": "1.3.12",
     "angular-mocks": "1.3.12",
-    "angular-material": "0.7.1",
+    "angular-material": "master",
     "jquery": "1.11.2",
     "lodash": "*",
     "restangular": "1.4.0",
