@@ -42,13 +42,17 @@
       <ul class="menu">
         <li ng-repeat="section in sections">
           <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+          <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
         </li>
       </ul>
     </md-sidenav>
     <div layout="column" tabindex="-1" role="main" flex id="content">
-      <md-toolbar class="md-theme-default">
+      <md-toolbar layout="row" layout-align="space-between" class="md-theme-default">
         <div class="md-toolbar-tools" ng-click="openMenu()" tabIndex="0">
           <md-button aria-label="Toggle Menu">Menu</md-button>
+        </div>
+        <div class="md-toolbar-tools" ng-click="login()" layout-align="end">
+          <md-button aria-label="Toggle Menu">Login</md-button>
         </div>
       </md-toolbar>
       <md-content layout="column" flex class="md-padding" ui-view>

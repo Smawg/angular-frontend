@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-text-replace');
 
   grunt.initConfig({
     'pkg': grunt.file.readJSON('package.json'),
@@ -39,6 +40,22 @@ module.exports = function (grunt) {
       'beforeconcat': ['Gruntfile.js','app/**/*.js'],
     },
 
+    'replace': {
+      'dist': {
+        'src': ['dist/*.js'],
+        'overwrite': true,
+        'replacements': [{
+          'from': "%BACKEND_ROOT%",
+          'to':   function() {
+            if(typeof process.env.SMAWG_BACKEND_ROOT != "undefined") {
+              return process.env.SMAWG_BACKEND_ROOT;
+            } else {
+              return "localhost:3000";
+            }
+          }
+        }]
+      }
+    },
 
     'concat': {
       'dist': {
@@ -73,8 +90,9 @@ module.exports = function (grunt) {
       'karma:development',
       'concat',
       'uglify',
+      'replace',
       'jsdoc'
     ]);
-
+  grunt.registerTask('default', ['jshint','concat','uglify','replace']);
 
 };

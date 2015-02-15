@@ -3,7 +3,7 @@
  *
  * @see https://github.com/mgonto/restangular
  */
-var services = angular.module('SmawgApp.services', [])
+var services = angular.module('SmawgApp.services')
     .factory('UserdataService', ['Restangular', '$q', function UserdataService(Restangular, $q) {
         return {
             /**

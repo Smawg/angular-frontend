@@ -12,19 +12,16 @@ var SmawgApp = angular.module('SmawgApp',
     ]
 );
 
-/*
- * Declaration of module containing the controllers.
- */
 angular.module('SmawgApp.controllers', []);
-/*
- * Declaration of module containing the directives..
- */
 angular.module('SmawgApp.directives', []);
+angular.module('SmawgApp.services', []);
 
 
-SmawgApp.config(function($mdThemingProvider) {
+SmawgApp.config(function($mdThemingProvider, RestangularProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('deep-purple')
     .accentPalette('pink')
     .backgroundPalette('grey');
+
+  RestangularProvider.setBaseUrl("http://%BACKEND_ROOT%/api/v1");
 });

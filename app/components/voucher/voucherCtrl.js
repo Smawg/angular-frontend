@@ -1,8 +1,26 @@
-angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scope, $http) {
-  $http.get('http://localhost:3000/api/v1/org/ACME/years/2015/vouchers').success(function(data, status, headers, config) {
-    $scope.vouchers = data;
-    $scope.vouchersStatus = status;
-  });
+angular.module('SmawgApp.services')
+  .factory('VoucherService', ['Restangular', '$q', 'AuthService', function VoucherService(Restangular, $q, AuthService) {
+    var org = AuthService.getUserInfo().organisation;
+    Restangular.setBaseUrl('http://localhost:3000/api/v1/org/' + org + '/years/2015');
+    return {
+      getVouchers : function() {
+        var vouchersDeferred = $q.defer();
+        var response = Restangular.all('vouchers').getList().then(function(response) {
+          vouchersDeferred.resolve(response[0]);
+        });
+        return vouchersDeferred.promise;
+      },
+      saveVoucher : function(voucher) {
+        var vouchersDeferred = $q.defer();
+        var response = Restangular.vouchers.save.then(function(response) {
+          vouchersDeferred.resolve(response[0]);
+        });
+        return vouchersDeferred.promise;
+      }
+    };
+  }]);
+angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scope, VoucherService) {
+  $scope.vouchers = VoucherService.getVouchers();
   $scope.voucherNbr = 0;
   $scope.description = "";
   $scope.date = "";
@@ -32,11 +50,8 @@ angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scop
   };
 
   $scope.SaveVoucher = function() {
-    var command = ['http://localhost:3000/api/v1/org/ACME/years/2015/vouchers', {"voucher": {"number": $scope.voucherNbr, "description": $scope.description, "date": $scope.date, "voucher_rows_attributes": $scope.AccountRows}}];
-    console.log(command);
-    $http.post('http://localhost:3000/api/v1/org/ACME/years/2015/vouchers', {"voucher": {"number": $scope.voucherNbr, "description": $scope.description, "date": $scope.date, "voucher_rows_attributes": $scope.AccountRows}}).success(function(data, status, headers, config) {
-      console.log("successfully added voucher to DB");
-    });
+    var voucher = {"voucher": {"number": $scope.voucherNbr, "description": $scope.description, "date": $scope.date, "voucher_rows_attributes": $scope.AccountRows}};
+    VoucherService.saveVoucher(voucher);
+    console.log("successfully added voucher to DB");
   };
-
 });

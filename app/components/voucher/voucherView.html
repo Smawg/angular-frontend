@@ -1,9 +1,8 @@
-    <md-tabs class="md-accent" md-selected="data.selectedIndex">
-      <md-tab id="tab1" aria-controls="tab1-content" ui-sref="voucher.overview">
-        Overview
-      </md-tab>
-      <md-tab id="tab2" aria-controls="tab3-content" ui-sref="voucher.addVoucher">
-        Add voucher
-      </md-tab>
-    </md-tabs>
-<div ui-view></div>
+<md-tabs class="md-accent" md-selected="data.selectedIndex">
+    <md-tab id="tab1" aria-controls="tab1-content" ui-sref="voucher.overview" label="Overview">
+    <div ui-view="tab1"></div>
+    </md-tab>
+    <md-tab id="tab2" aria-controls="tab3-content" ui-sref="voucher.addVoucher" label="Add Voucher">
+    <div ui-view="tab2"></div>
+    </md-tab>
+</md-tabs>
