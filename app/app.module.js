@@ -12,7 +12,7 @@ angular.module('SmawgApp.controllers', []);
 
 SmawgApp.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('blue-grey')
+    .primaryPalette('deep-purple')
     .accentPalette('pink')
     .backgroundPalette('grey');
 });
