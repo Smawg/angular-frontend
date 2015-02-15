@@ -22,20 +22,35 @@
     <script src="/dist/smawg-frontend-0.0.1.min.js"></script>
 </head>
 <body ng-app="SmawgApp" ng-controller="SmawgNavCtrl" layout="column">
+<!--
 <header>
   <md-toolbar md-scroll-shrink layout="row">
     <md-button ng-click="toggleSidenav('left')" >Menu</md-button>
   <h1><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Smawg</h1>
   </md-toolbar>
 </header>
+-->
   <div layout="row" flex>
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-sm')">
-            <md-button ui-sref="home">Home</md-button>
-            <md-button ui-sref="dash">Dash</md-button>
-            <md-button ui-sref="voucher.overview">Voucher</md-button>
-            <md-button ui-sref="about">About</md-button>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+      <md-toolbar>
+        <h1 class="md-toolbar-tools">
+          <a layout="row" ui-sref="home" flex>
+            <div style="line-height:40px; text-indent: 15px;">Smawg</div>
+          </a>
+        </h1>
+      </md-toolbar>
+      <ul class="menu">
+        <li ng-repeat="section in sections">
+          <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+        </li>
+      </ul>
     </md-sidenav>
-    <div layout="column" flex id="content">
+    <div layout="column" tabindex="-1" role="main" flex id="content">
+      <md-toolbar class="md-theme-default">
+        <div class="md-toolbar-tools">
+            <md-button class="menu-icon" aria-label="Toggle Menu" ng-click="openMenu()">Menu</md-button>
+        </div>
+      </md-toolbar>
       <md-content layout="column" flex class="md-padding" ui-view>
       </md-content>
     </div>
