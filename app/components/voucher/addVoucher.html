@@ -11,11 +11,11 @@ I want to get a Json similar to the following:
 <md-toolbar class="md-primary">
   <h1 class="md-toolbar-tools">Add a voucher</h1>
 </md-toolbar>
-<form name="addVoucherForm">
+<form name="addVoucherForm" ng-submit="SaveVoucher();">
     <div layout layout-sm="column">
 	 <md-input-container flex>
             <label>Voucher ID</label>
-            <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="newVoucher.number">
+            <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="voucherNbr">
             <div ng-messages="addVoucherForm.number.$error" ng-show="addVoucherForm.number.$dirty">
               <div ng-message="required">A description is required.</div>
               <div ng-message="minlength">The description should probably be slightly more informative.</div>
@@ -24,7 +24,7 @@ I want to get a Json similar to the following:
 
           <md-input-container flex>
             <label>Description</label>
-            <input name="description" placeholder="A short description" minlength="2" required ng-model="newVoucher.description">
+            <input name="description" placeholder="A short description" minlength="2" required ng-model="description">
             <div ng-messages="addVoucherForm.description.$error" ng-show="addVoucherForm.description.$dirty">
               <div ng-message="required">A description is required.</div>
               <div ng-message="minlength">The description should probably be slightly more informative.</div>
@@ -33,7 +33,7 @@ I want to get a Json similar to the following:
 
           <md-input-container>
             <label>Date</label>
-            <input name="date" type="date" required ng-model="newVoucher.date">
+            <input name="date" type="date" required ng-model="date">
             <div ng-messages="addVoucherForm.date.$error" ng-show="addVoucherForm.date.$dirty">
               <div ng-message="required">A date is required.</div>
             </div>
@@ -43,44 +43,58 @@ I want to get a Json similar to the following:
      <md-grid-list md-cols="3" md-row-height="1:1" md-gutter="2px" >
      <div class="row">
      <label class="col-md-4">Account</label>
-     <label class="col-md-2">Debet</label>
-     <label class="col-md-2">Kredit</label>
+     <label class="col-md-2">Debit</label>
+     <label class="col-md-2">Credit</label>
      </div>
      <div class="row" ng-repeat="row in AccountRows">
        <md-grid-tile class="col-md-4">
         <md-input-container>
-          <input name="account_number" type="number" placeholder="Account number"  required ng-model="newVoucher.account_number">
+          <input name="account_number" type="number" placeholder="Account number"  required ng-model="row.account_number">
         </md-input-container>
        </md-grid-tile>
        <md-grid-tile>
         <md-input-container class="col-md-2">
-          <input name="account_debet" type="number" placeholder="Debet"  ng-model="newVoucher.debet">
+          <input name="account_debit" type="number" placeholder="Debit"  ng-model="row.debit">
         </md-input-container>
        </md-grid-tile>
        <md-grid-tile>
         <md-input-container class="col-md-2">
-          <input name="account_kredit" type="number" placeholder="Kredit"  ng-model="newVoucher.kredit">
+          <input name="account_credit" type="number" placeholder="Credit"  ng-model="row.credit">
+        </md-input-container>
+       </md-grid-tile>
+        <md-input-container class="col-md-1">
+          <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
         </md-input-container>
        </md-grid-tile>
      </md-grid-list>
      </div>
+
+
      <div class="row">
       <md-grid-tile class="col-md-4">
         <md-input-container>
-          <input name="account_number" type="number" placeholder="Total"  disabled ng-model="newVoucher.account_number">
+        <label>Total: </label>
         </md-input-container>
        </md-grid-tile>
        <md-grid-tile>
         <md-input-container class="col-md-2">
-          <input name="account_debet" type="number" placeholder="Debet" disabled  ng-model="newVoucher.debet">
+          <label >{{TotalDebit()}}</label>
+
         </md-input-container>
        </md-grid-tile>
        <md-grid-tile>
         <md-input-container class="col-md-2">
-          <input name="account_kredit" type="number" placeholder="Kredit" disabled  ng-model="newVoucher.kredit">
+          <label>{{TotalCredit()}}</label>
         </md-input-container>
        </md-grid-tile>
      </md-grid-list>
+     <md-grid-tile>
+        <md-input-container class="col-md-2">
+          <label>{{TotalDebit() - TotalCredit()}}</label>
+        </md-input-container>
+       </md-grid-tile>
+     </md-grid-list>
+
      </div>
      <md-button><i class="icon-ok-circle icon-white"></i> Save voucher</md-button>
      <md-button type="button" ng-click="addAccountRow();"> <i class="icon-plus icon-white"></i> Add account row</md-button>
