@@ -31,7 +31,8 @@ SmawgApp.config(function($stateProvider, $urlRouterProvider) {
       })
       .state('voucheroverview', {
         url: '/voucheroverview',
-        templateUrl: 'app/components/voucher/overviewView.html'
+        templateUrl: 'app/components/voucher/overviewView.html',
+        controller: 'VoucherCtrl'
       })
       .state('voucher/:voucherId', {
         url: '/voucher',
