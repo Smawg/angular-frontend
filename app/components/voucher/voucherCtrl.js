@@ -7,21 +7,24 @@ angular.module('SmawgApp.services')
       getVouchers : function() {
         var vouchersDeferred = $q.defer();
         var response = vouchers.getList().then(function(response) {
-          vouchersDeferred.resolve(response[0]);
+          vouchersDeferred.resolve(response);
         });
         return vouchersDeferred.promise;
       },
       saveVoucher : function(voucher) {
         var vouchersDeferred = $q.defer();
         var response = vouchers.post(voucher).then(function(response) {
-          vouchersDeferred.resolve(response[0]);
+          vouchersDeferred.resolve(response);
         });
         return vouchersDeferred.promise;
       }
     };
   }]);
 angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scope, VoucherService) {
-  $scope.vouchers = VoucherService.getVouchers();
+  VoucherService.getVouchers().then(function(data){
+    console.log(data);
+    $scope.vouchers = data;
+  });
   $scope.voucherNbr = 0;
   $scope.description = "";
   $scope.date = "";
