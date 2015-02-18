@@ -1,20 +1,48 @@
-ul.menu
+ul.menu, ul.menu-toggle-list
 {
     list-style:none;
     padding:0px;
 }
 
-ul.menu li
+ul.menu li, ul.menu-toggle-list li
 {
     list-style-position: inside;
 }
 
-a.md-button
+menu-toggle, menu-link
+{
+    display:block;
+    text-align:left;
+    line-height:40px;
+}
+
+ul.menu .md-button
 {
     display:block;
     text-align:left;
     padding:0px 16px 0px 32px;
     line-height:40px;
+}
+ul.menu-toggle-list .md-button
+{
+    padding:0px 16px 0px 40px;
+}
+ul.menu .md-button span
+{
+    display:block;
+    width:100%;
+}
+
+.smawg-hide {
+    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    line-height: 20px;
+    opacity: 1;
+}
+
+.smawg-hide.ng-hide {
+    line-height: 0;
+    opacity: 0;
 }
 /*
 h1, h2, h3, h4, h5, h6 {

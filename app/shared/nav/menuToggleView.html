@@ -1,6 +1,6 @@
-<ul class="menu-toggle-list">
-  <md-button>{{section.name}}</md-button>
-  <li ng-repeat="page in pages">
+<md-button ng-click="toggle()" class="ng-scope">{{section.name}}</md-button>
+<ul class="menu-toggle-list smawg-hide" ng-show="isOpen()">
+  <li ng-repeat="page in section.pages">
     <menu-link section="page"></menu-link>
   </li>
 </ul>

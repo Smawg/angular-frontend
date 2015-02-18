@@ -1,4 +1,13 @@
 angular.module('SmawgApp.controllers').controller('SmawgNavCtrl', ['$scope', '$mdSidenav', '$mdBottomSheet', function ($scope, $mdSidenav, $mdBottomSheet) {
+
+  $scope.open = 0;
+  $scope.toggle = function() {
+    $scope.open = !$scope.open;
+  };
+  $scope.isOpen = function() {
+    return $scope.open;
+  };
+
   $scope.openMenu = function () {
     $mdSidenav("left").open();
   };
