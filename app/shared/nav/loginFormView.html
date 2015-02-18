@@ -1,0 +1,22 @@
+<md-bottom-sheet ng-controller="LoginController" class="md-has-header md-default-theme">
+  <h2 class="md-subheader">
+    <span class="md-subheader-content">Login</span>
+  </h2>
+  <md-content class="md-padding">
+    <form novalidate name="userLogin">
+      <div layout="row">
+      <md-input-container>
+        <label>Username</label>
+        <input name="username" ng-model="credentials.username" />
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" ng-model="credentials.password" />
+      </md-input-container>
+      <md-input-container>
+        <input type="submit" ng-click="login(credentials)" />
+      </md-input-container>
+      </div>
+    </form>
+  </md-content>
+</md-bottom-sheet>

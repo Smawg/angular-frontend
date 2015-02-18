@@ -30,16 +30,21 @@ SmawgApp.config(function($stateProvider, $urlRouterProvider) {
         controller: 'VoucherCtrl'
       })
       .state('voucher.overview', {
-        url: '/overview',
-        templateUrl: 'app/components/voucher/overviewView.html',
-        controller: 'VoucherCtrl'
+        url: '/voucher/overview',
+        views: {
+          'tab1': {
+            templateUrl: 'app/components/voucher/overviewView.html'
+          }
+        }
       })
       .state('voucher.addVoucher', {
-        url: '/addVoucher',
-        templateUrl: 'app/components/voucher/addVoucher.html',
-        controller: 'VoucherCtrl'
+        url: '/voucher/add',
+        views: {
+          'tab2': {
+            templateUrl: 'app/components/voucher/addVoucher.html'
+          }
+        }
       })
-
       .state('voucher/:voucherId', {
         url: '/voucher',
         templateUrl: 'app/components/voucher/voucherView.html',
