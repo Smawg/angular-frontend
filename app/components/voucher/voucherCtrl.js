@@ -2,17 +2,18 @@ angular.module('SmawgApp.services')
   .factory('VoucherService', ['Restangular', '$q', 'AuthService', function VoucherService(Restangular, $q, AuthService) {
     var org = AuthService.getUserInfo().organisation;
     Restangular.setBaseUrl('http://localhost:3000/api/v1/org/' + org + '/years/2015');
+    var vouchers = Restangular.all('vouchers');
     return {
       getVouchers : function() {
         var vouchersDeferred = $q.defer();
-        var response = Restangular.all('vouchers').getList().then(function(response) {
+        var response = vouchers.getList().then(function(response) {
           vouchersDeferred.resolve(response[0]);
         });
         return vouchersDeferred.promise;
       },
       saveVoucher : function(voucher) {
         var vouchersDeferred = $q.defer();
-        var response = Restangular.vouchers.save.then(function(response) {
+        var response = vouchers.post(voucher).then(function(response) {
           vouchersDeferred.resolve(response[0]);
         });
         return vouchersDeferred.promise;
