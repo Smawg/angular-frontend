@@ -20,8 +20,12 @@ angular.module('SmawgApp.controllers').controller('SmawgNavCtrl', ['$scope', '$m
       sref: "dash",
       type: "link"
     }, { 
-      name: "Voucher",
+      name: "Add Voucher",
       sref: "voucher",
+      type: "link"
+    }, { 
+      name: "Vouchers",
+      sref: "voucheroverview",
       type: "link"
     }, { 
       name: "Reports",
