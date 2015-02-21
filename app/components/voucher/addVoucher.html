@@ -8,76 +8,86 @@ I want to get a Json similar to the following:
 
 
 <md-content class="md-padding md-whiteframe-z1">
-<md-toolbar class="md-primary">
-  <h1 class="md-toolbar-tools">Add a voucher</h1>
-</md-toolbar>
-<form name="addVoucherForm" ng-submit="SaveVoucher();">
-    <div layout layout-sm="column">
-	 <md-input-container flex>
-            <label>Voucher ID</label>
-            <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="voucherNbr">
-            <div ng-messages="addVoucherForm.number.$error" ng-show="addVoucherForm.number.$dirty">
-              <div ng-message="required">A description is required.</div>
-              <div ng-message="minlength">The description should probably be slightly more informative.</div>
-            </div>
-          </md-input-container>
+  <md-toolbar class="md-primary">
+    <h1 class="md-toolbar-tools">Add a voucher</h1>
+  </md-toolbar>
+  <form name="addVoucherForm" ng-submit="SaveVoucher();">
+    <div layout="row">
+      <md-input-container flex="20">
+        <label>Voucher ID</label>
+        <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="voucherNbr">
+        <div ng-messages="addVoucherForm.number.$error">
+          <div ng-message="required">Number required.</div>
+        </div>
+      </md-input-container>
 
-          <md-input-container flex>
-            <label>Description</label>
-            <input name="description" placeholder="A short description" minlength="2" required ng-model="description">
-            <div ng-messages="addVoucherForm.description.$error" ng-show="addVoucherForm.description.$dirty">
-              <div ng-message="required">A description is required.</div>
-              <div ng-message="minlength">The description should probably be slightly more informative.</div>
-            </div>
-          </md-input-container>
+      <md-input-container flex="60">
+        <label>Description</label>
+        <input name="description" placeholder="A short description" minlength="2" required ng-model="description">
+        <div ng-messages="addVoucherForm.description.$error" ng-show="addVoucherForm.description.$dirty">
+          <div ng-message="required">A description is required.</div>
+          <div ng-message="minlength">The description should probably be slightly more informative.</div>
+        </div>
+      </md-input-container>
 
-          <md-input-container>
-            <label>Date</label>
-            <input name="date" type="date" required ng-model="date">
-            <div ng-messages="addVoucherForm.date.$error" ng-show="addVoucherForm.date.$dirty">
-              <div ng-message="required">A date is required.</div>
-            </div>
-          </md-input-container>
-     </div>
+      <md-input-container flex="20">
+        <label>Date</label>
+        <input name="date" type="date" required ng-model="date">
+        <div ng-messages="addVoucherForm.date.$error" ng-show="addVoucherForm.date.$dirty">
+          <div ng-message="required">A date is required.</div>
+        </div>
+      </md-input-container>
+    </div>
 
-     <div layout="row">
-     <label flex="20">Account</label>
-     <label flex="10">Debit</label>
-     <label flex="10">Credit</label>
-     </div>
-     <div layout="row" ng-repeat="row in AccountRows">
-        <md-input-container flex="20">
-          <input name="account_number" type="number" placeholder="Account number"  required ng-model="row.account_number">
-        </md-input-container>
-        <md-input-container flex="10">
-          <input name="account_debit" type="number" placeholder="Debit"  ng-model="row.debit">
-        </md-input-container>
-        <md-input-container flex="10">
-          <input name="account_credit" type="number" placeholder="Credit"  ng-model="row.credit">
-        </md-input-container>
-        <md-input-container flex="5">
-          <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
-        </md-input-container>
-     </div>
+    <div layout="row">
+      <label flex="20">Account</label>
+      <label flex="10">Debit</label>
+      <label flex="10">Credit</label>
+    </div>
+    <div layout="row" ng-repeat="row in AccountRows">
+      <md-input-container flex="20">
+        <input name="account_number" type="number" placeholder="Account number"  required ng-model="row.account_number">
+      </md-input-container>
+      <md-input-container flex="10">
+        <input name="account_debit" type="number" placeholder="Debit"  ng-model="row.debit">
+      </md-input-container>
+      <md-input-container flex="10">
+        <input name="account_credit" type="number" placeholder="Credit"  ng-model="row.credit">
+      </md-input-container>
+      <md-input-container flex="5">
+        <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
+      </md-input-container>
+    </div>
+    <div layout="row">
+      <md-input-container flex="20">
+        <input name="account_number" type="number" placeholder="Account number"  required ng-model="row.account_number" ng-focus="addAccountRow();">
+      </md-input-container>
+      <md-input-container flex="10">
+        <input name="account_debit" type="number" placeholder="Debit"  ng-model="row.debit">
+      </md-input-container>
+      <md-input-container flex="10">
+        <input name="account_credit" type="number" placeholder="Credit"  ng-model="row.credit">
+      </md-input-container>
+      <md-input-container flex="5">
+        <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
+      </md-input-container>
+    </div>
 
-
-     <div layout="row">
-        <md-input-container flex="20">
+    <div layout="row">
+      <md-input-container flex="20">
         <label>Total: </label>
-        </md-input-container>
-        <md-input-container flex="10">
-          <label >{{TotalDebit()}}</label>
-
-        </md-input-container>
-        <md-input-container flex="10">
-          <label>{{TotalCredit()}}</label>
-        </md-input-container>
-        <md-input-container flex="10">
-          <label>{{TotalDebit() - TotalCredit()}}</label>
-        </md-input-container>
-
-     </div>
-     <md-button><i class="icon-ok-circle icon-white"></i> Save voucher</md-button>
-     <md-button type="button" ng-click="addAccountRow();"> <i class="icon-plus icon-white"></i> Add account row</md-button>
-</form>
+      </md-input-container>
+      <md-input-container flex="10">
+        <label >{{TotalDebit()}}</label>
+      </md-input-container>
+      <md-input-container flex="10">
+        <label>{{TotalCredit()}}</label>
+      </md-input-container>
+      <md-input-container flex="10">
+        <label>{{TotalDebit() - TotalCredit()}}</label>
+      </md-input-container>
+    </div>
+    <md-button><i class="icon-ok-circle icon-white"></i> Save voucher</md-button>
+    <md-button type="button" ng-click="addAccountRow();"> <i class="icon-plus icon-white"></i> Add account row</md-button>
+  </form>
 </md-content>

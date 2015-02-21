@@ -25,10 +25,8 @@ angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scop
     console.log(data);
     $scope.vouchers = data;
   });
-  $scope.voucherNbr = 0;
-  $scope.description = "";
-  $scope.date = "";
-  $scope.AccountRows=[{account_number: 0, debit: 0, credit: 0}];
+  $scope.AccountRows=[];
+  $scope.editVoucher=false;
   $scope.addAccountRow = function(){
     $scope.AccountRows.push({account_number: 0, debit: 0, credit: 0});
   };
@@ -53,9 +51,20 @@ angular.module('SmawgApp.controllers').controller('VoucherCtrl', function ($scop
     return sum;
   };
 
+
+  $scope.toggleEdit = function() {
+    $scope.editVoucher = !($scope.editVoucher);  
+  };
+    
   $scope.SaveVoucher = function() {
     var voucher = {"voucher": {"number": $scope.voucherNbr, "description": $scope.description, "date": $scope.date, "voucher_rows_attributes": $scope.AccountRows}};
     VoucherService.saveVoucher(voucher);
+    
     console.log("successfully added voucher to DB");
+  };
+  
+  $scope.SaveEditedVoucher= function($http,index, voucherNbr, description, date, voucher_rows_attributes){
+    var voucher = {"voucher": {"number": voucherNbr, "description": description, "date": date, "voucher_rows_attributes": voucher_rows_attributes}};
+    $http.post("http://localhost:3000/api/v1/org/ACME/years/2015/vouchers/:" + index, voucher);
   };
 });

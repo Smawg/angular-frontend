@@ -1,18 +1,53 @@
+
 <div>
 <md-content>
   <md-list>
     <md-item ng-repeat="voucher in vouchers">
       <md-item-content>
         <div class="md-tile-left">
-          <img src="https://placekitten.com/g/50/50"></img>
+          <md-button type="button" ng-click="editVoucher=!editVoucher;"> <img src="https://placekitten.com/g/50/50"></img>
         </div>
         <div class="md-tile-content">
-          <h3>{{voucher.description}}</h3>
-          <p>{{voucher.date}}</p>
-          <div layout layout-sm="column" ng-repeat="voucher_row_attribute in voucher.voucher_rows_attributes">
-            <p> {{voucher_row_attribute.account_number}}:{{voucher_row_attibute}}</p>
-          </div>	
-        </div>
+          <h3 ><md-button type="button" ng-click="editVoucher=!editVoucher;">{{voucher.description}}</md-button></h3>
+          <h4 ng-show="!editVoucher">{{voucher.number}}</h4>
+  
+          <div layout layout="row" ng-repeat="voucher_row_attribute in voucher.voucher_rows_attributes">
+            {{voucher_row_attribute.account_number}}:{{voucher_row_attibute.debit}}
+          </div>
+        <form name="editVoucherForm" ng-submit="SaveEditedVoucher($index);" ng-show="editVoucher">
+          <div ng-show="editVoucher">
+           <div layout layout-sm="column">
+             <md-input-container flex="20">
+                <label>Voucher ID</label>
+                <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="voucher.number">
+                <div ng-messages="editVoucherForm.number.$error" >
+                  <div ng-message="required">Number required.</div>
+                </div>
+              </md-input-container>
+
+              <md-input-container flex="60">
+                <label>Description</label>
+                <input name="description" placeholder="A short description" minlength="2" required ng-model="voucher.description">
+                <div ng-messages="editVoucherForm.description.$error" >
+                  <div ng-message="required">A description is required.</div>
+                  <div ng-message="minlength">The description should probably be slightly more informative.</div>
+                </div>
+              </md-input-container>
+
+              <md-input-container flex="20">
+                <label>Date</label>
+                <input name="date" type="date" required ng-model="voucher.date">
+                <div ng-messages="editVoucherForm.date.$error">
+                  <div ng-message="required">A date is required.</div>
+                </div>
+              </md-input-container> 
+             </div>
+             <div layout="row">
+              <md-button type="button" ng-click="SaveEditedVoucher($http, $index, voucher.number, voucher.description, voucher.date, voucher.voucher_rows_attributes);"><i class="icon-ok-circle icon-white"></i> Save voucher</md-button>
+             </div>
+            </div>
+           </form>
+         </div>
       </md-item-content>
     </md-item>
   </md-list>
