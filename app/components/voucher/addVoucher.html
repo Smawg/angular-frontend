@@ -15,7 +15,7 @@ I want to get a Json similar to the following:
     <div layout="row">
       <md-input-container flex="20">
         <label>Voucher ID</label>
-        <input name="number" placeholder="Voucher Number" type="number" minlength="1" required ng-model="voucherNbr">
+        <input name="number" placeholder="Voucher Number" type="number" required ng-model="voucherNbr">
         <div ng-messages="addVoucherForm.number.$error">
           <div ng-message="required">Number required.</div>
         </div>
@@ -23,8 +23,8 @@ I want to get a Json similar to the following:
 
       <md-input-container flex="60">
         <label>Description</label>
-        <input name="description" placeholder="A short description" minlength="2" required ng-model="description">
-        <div ng-messages="addVoucherForm.description.$error" ng-show="addVoucherForm.description.$dirty">
+        <input name="description" placeholder="A short description" minlength="4" required ng-model="description">
+        <div ng-messages="addVoucherForm.description.$error">
           <div ng-message="required">A description is required.</div>
           <div ng-message="minlength">The description should probably be slightly more informative.</div>
         </div>
@@ -33,7 +33,7 @@ I want to get a Json similar to the following:
       <md-input-container flex="20">
         <label>Date</label>
         <input name="date" type="date" required ng-model="date">
-        <div ng-messages="addVoucherForm.date.$error" ng-show="addVoucherForm.date.$dirty">
+        <div ng-messages="addVoucherForm.date.$error" >
           <div ng-message="required">A date is required.</div>
         </div>
       </md-input-container>
@@ -58,6 +58,7 @@ I want to get a Json similar to the following:
         <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
       </md-input-container>
     </div>
+<!--- Trying to add a row on focusing the last row.
     <div layout="row">
       <md-input-container flex="20">
         <input name="account_number" type="number" placeholder="Account number"  required ng-model="row.account_number" ng-focus="addAccountRow();">
@@ -72,7 +73,7 @@ I want to get a Json similar to the following:
         <md-button type="button" ng-click="removeAccountRow($index)"><i class="icon-remove-circle icon-white"></i></md-button>
       </md-input-container>
     </div>
-
+-->
     <div layout="row">
       <md-input-container flex="20">
         <label>Total: </label>
